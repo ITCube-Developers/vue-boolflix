@@ -1,0 +1,108 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:focus { outline: none; }
+
+
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 15%;
+  padding: 0 5%;
+  background-color: black;
+}
+
+h1 {
+  font-size: 50px;
+  color: red;
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+#app {
+  width: 100%;
+  height: 100vh;
+}
+
+.research input  {
+  width: 200px;
+  height: 30px;
+  padding: 0 5px;
+  margin-right: 5px;
+  border-radius: 5px;
+  border: none;
+}
+
+.research button {
+  border: none;
+  background-color: black;
+  color: red;
+  font-size: 20px;
+}
+
+.research button:hover {
+  color: white;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 85%;
+  background-color: black;
+}
+
+.library {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  height: 100%;
+  padding: 50px;
+  background-color: #141922;
+  overflow-y: scroll;
+}
+
+.movie-card {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 220px;
+  height: 342px;
+  margin: 20px 50px 50px 50px;
+}
+
+.movie-card img {
+  object-fit: cover;
+}
+
+.movie-card:hover .review-movie {
+  transition: 1s;
+  opacity: 1;
+}
+
+.review-movie {
+  position: absolute;
+  top: 0;
+  top: 0;
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  background-color: black;
+  width: 220px;
+  height: 100%;
+  padding: 15px;
+  color: white;
+  opacity: 0;
+  overflow-y: scroll;
+}
+
+.review-movie h4 {
+  margin: 10px 0;
+}
