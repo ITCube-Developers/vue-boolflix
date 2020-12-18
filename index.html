@@ -38,16 +38,30 @@
         <div v-if="moviesResult != false" class="library">
 
           <div v-for="movie in moviesResult" class="movie-card">
-            <img :src="movie.adress" alt="movie-cover">
+            <img :src="adress + movie.poster_path" :alt="movie.title">
             <div class="review-movie">
               <h4>titolo <span>"{{movie.title}}"</span> </h4>
               <h4 v-if="movie.title != movie.original_title">titolo:originale <br> <span>"{{movie.origina_title}}"</span> </h4>
-              <h4>voto: <span>stelline</span> </h4>
+              <h4>voto:
+              <span v-if="movie.vote_average < 2">
+                <i class="fas fa-star"></i>
+              </span>
+              <span v-if="movie.vote_average < 4 && movie.vote_average > 2">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </span>
+              <span v-if="movie.vote_average < 6 && movie.vote_average > 4">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </span>
+              <span v-if="movie.vote_average < 8 && movie.vote_average > 6">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </span>
+              <span v-if="movie.vote_average < 10 && movie.vote_average > 8"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </span>
+
+              </h4>
               <p>overview: <span>{{movie.overview}}</span> </p>
             </div>
           </div>
-
-
         </div>
 
       </main>
