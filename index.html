@@ -29,7 +29,7 @@
             v-on:keyup.enter="movieResearch"
             value=""
             placeholder="Cerca Film nella libreria" required >
-            <button class="send"><i class="fas fa-search"></i></button>
+            <button @click="movieResearch"class="send"><i class="fas fa-search"></i></button>
           </div>
         </nav>
       </header>
