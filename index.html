@@ -34,32 +34,30 @@
         </nav>
       </header>
       <main>
-
+        <div v-if="moviesResult == false" class="welcome">
+          <div class="overlay">
+          </div>
+          <h2>Benvenuto. <br>
+            Milioni di film e recensioni  da scoprire. <br>
+            <p>Esplora ora.</p>
+          </h2>
+        </div>
         <div v-if="moviesResult != false" class="library">
-
-          <div v-for="movie in moviesResult" class="movie-card">
-            <img :src="adress + movie.poster_path" :alt="movie.title">
+          <div v-for="(movie,index) in moviesResult" class="movie-card">
+            <img class="not-found" v-if="movie.poster_path == null" src="https://s018.radikal.ru/i524/1201/c3/60f3aa1387ae.jpg" alt="">
+            <img v-if="movie.poster_path != null":src="adress + movie.poster_path" :alt="movie.title">
             <div class="review-movie">
-              <h4>titolo <span>"{{movie.title}}"</span> </h4>
-              <h4 v-if="movie.title != movie.original_title">titolo:originale <br> <span>"{{movie.origina_title}}"</span> </h4>
-              <h4>voto:
-              <span v-if="movie.vote_average < 2">
-                <i class="fas fa-star"></i>
-              </span>
-              <span v-if="movie.vote_average < 4 && movie.vote_average > 2">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i>
-              </span>
-              <span v-if="movie.vote_average < 6 && movie.vote_average > 4">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              </span>
-              <span v-if="movie.vote_average < 8 && movie.vote_average > 6">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              </span>
-              <span v-if="movie.vote_average < 10 && movie.vote_average > 8"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              </span>
-
+              <h3>Titolo: <span>"{{movie.title}}"</span> </h3>
+              <h4 v-if="movie.title != movie.original_title">Titolo originale: <br> <span>"{{movie.original_title}}"</span> </h4>
+              <h4>Voto:
+                <span v-if="moviesResult[index].vote_average == false"> N/D</span>
+                <span v-for="rank  in moviesResult[index].vote_average">
+                    <i class="fas fa-star"></i>
+                </span>
               </h4>
-              <p>overview: <span>{{movie.overview}}</span> </p>
+              <h4 class="overview-scroll">Overview:
+              <p v-if="moviesResult[index].overview == false">Coming Soon</p>
+              <p>{{movie.overview}}</p> </h4>
             </div>
           </div>
         </div>
