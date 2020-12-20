@@ -22,6 +22,7 @@ h1 {
   font-size: 50px;
   color: red;
   font-family: 'Bebas Neue', sans-serif;
+  cursor: pointer;
 }
 
 #app {

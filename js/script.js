@@ -31,6 +31,13 @@ var app = new Vue (
           )
           return self.research = "";
         }
+      },
+
+      backTohome: function() {
+        const self = this;
+        if (self.moviesResult != false) {
+          self.moviesResult = false
+        }
       }
     },
   }
