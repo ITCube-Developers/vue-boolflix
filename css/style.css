@@ -25,6 +25,10 @@ h1 {
   cursor: pointer;
 }
 
+.fas.fa-arrow-circle-left {
+  font-size: 25px;
+}
+
 #app {
   width: 100%;
   height: 100vh;
@@ -55,7 +59,7 @@ main {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 85%;
+  height: 80%;
   background-color: black;
 }
 
@@ -64,10 +68,18 @@ main {
   width: 90%;
   height: 100%;
   background-image: url(https://cdn.hipwallpaper.com/i/98/21/dUyCkp.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .welcome p {
   color: red;
+}
+
+.welcome a {
+  color: red;
+  cursor: pointer;
 }
 
 .welcome h2 {
@@ -103,6 +115,7 @@ main {
   justify-content: center;
   width: 220px;
   height: 342px;
+  border-radius: 10px;
   margin: 20px 50px 50px 50px;
 }
 .review-movie h3{
@@ -111,15 +124,17 @@ main {
 
 .movie-card img {
   object-fit: cover;
+  border-radius: 10px;
   transition: 1s;
   z-index: 1;
 }
 
 
 .movie-card:hover .review-movie {
-  transition: 1s;
+  transition: 0.7s;
   opacity: 1;
   z-index: 4;
+  height: 342px;
 }
 
 .movie-card:hover img {
@@ -133,10 +148,11 @@ main {
   display: flex;
   flex-direction:column;
   align-items: center;
-  background-color: black;
+  background-color: #2D2F36;
   width: 220px;
-  height: 342px;
+  height: 0;
   padding: 15px;
+  border-radius: 10px;
   color: white;
   opacity: 0;
   z-index: 0;
@@ -159,4 +175,17 @@ main {
   width: 220px;
   height: 342px;
   filter: invert();
+}
+
+footer {
+  height: 5%;
+  width: 100%;
+  background-color: black;
+  color: white;
+  font-size: 30px;
+  padding: 10px 5%;
+}
+
+.fortu {
+  color: red;
 }
