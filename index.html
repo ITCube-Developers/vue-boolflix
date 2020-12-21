@@ -73,6 +73,7 @@
                 <span v-for="rank in moviesResult[index].emptyStar" class="margin-emptyStar" ><i class="far fa-star"></i>
                 </span>
               </h4>
+              <h4>Lingua originale: <img v-if="movie.flag_language != false" class="flag-language" :src="movie.flag_language" alt=""> <span>{{movie.original_language}}</span> </h4>
               <h4 class="overview-scroll">Overview:
               <p v-if="moviesResult[index].overview == false">Coming Soon</p>
               <p>{{movie.overview}}</p> </h4>
@@ -93,6 +94,7 @@
                 <span v-for="rank in seriesResult[index].emptyStar" class="margin-emptyStar" ><i class="far fa-star"></i>
                 </span>
               </h4>
+              <h4>Lingua originale: <img v-if="serie.flag_language != false" class="flag-language" :src="serie.flag_language" alt=""> <span>{{serie.original_language}}</span> </h4>
               <h4 class="overview-scroll">Overview:
               <p v-if="seriesResult[index].overview == false">Coming Soon</p>
               <p>{{serie.overview}}</p> </h4>

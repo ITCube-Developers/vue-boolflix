@@ -12,6 +12,10 @@ var app = new Vue (
       moviesError: false,
       seriesError: false,
       totalResult: -1,
+      flag_language: "",
+      italianFlag: "https://img.icons8.com/color/2x/italy-circular.png",
+      englishFlag: "https://img.icons8.com/color/2x/great-britain-circular.png",
+      spanishFlag: "https://img.icons8.com/color/2x/spain2-circular.png",
 
       adress: "https://image.tmdb.org/t/p/w220_and_h330_face",
     },
@@ -22,6 +26,7 @@ var app = new Vue (
         const self = this;
         self.welcome = false;
         self.moviesError = false;
+        self.moviesResult = [];
 
         if (self.research != "") {
           axios
@@ -45,6 +50,20 @@ var app = new Vue (
                 item.emptyStar = 5 - item.rankStar;
                 }
               );
+              self.moviesResult.forEach(
+                (item) => {
+                  if (item.original_language == "it") {
+                    item.flag_language = self.italianFlag;
+                  } else if (item.original_language == "en") {
+                    item.flag_language = self.englishFlag;
+                  } else if (item.original_language == "es") {
+                    item.flag_language = self.spanishFlag;
+                  } else {
+                    item.flag_language = item.original_language;
+                  }
+                }
+              );
+
             }
           )
         }
@@ -54,6 +73,8 @@ var app = new Vue (
         const self = this;
         self.welcome = false;
         self.seriesError = false;
+        self.seriesResult = [];
+
 
 
 
@@ -80,10 +101,24 @@ var app = new Vue (
                 item.emptyStar = 5 - item.rankStar;
                 }
               );
+
+              self.seriesResult.forEach(
+                (item) => {
+                  if (item.original_language == "it") {
+                    item.flag_language = self.italianFlag;
+                  } else if (item.original_language == "en") {
+                    item.flag_language = self.englishFlag;
+                  } else if (item.original_language == "es") {
+                    item.flag_language = self.spanishFlag;
+                  } else {
+                    item.flag_language = item.original_language;
+                  }
+                }
+              );
             }
           )
           return self.research = "";
-          
+
 
 
         }

@@ -136,9 +136,7 @@ main {
   z-index: 4;
 }
 
-.movie-card:hover img {
-  opacity: 0;
-}
+
 
 .review-movie {
   position: absolute;
@@ -159,6 +157,10 @@ main {
 
 .review-movie h4 {
   margin: 10px 0;
+}
+
+.flag-language{
+  width: 30px;
 }
 
 .margin-emptyStar {
