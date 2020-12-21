@@ -6,9 +6,13 @@ var app = new Vue (
     el: "#app",
     data: {
       moviesResult: [],
+      seriesResult: [],
       research: "",
-      totalResult: "",
-      page: "",
+      welcome: true,
+      moviesError: false,
+      seriesError: false,
+      totalResult: -1,
+
       adress: "https://image.tmdb.org/t/p/w220_and_h330_face",
     },
 
@@ -16,16 +20,24 @@ var app = new Vue (
 
       movieResearch: function() {
         const self = this;
+        self.welcome = false;
+        self.moviesError = false;
 
         if (self.research != "") {
           axios
-          .get("https://api.themoviedb.org/3/search/movie?api_key=6ef857fc5320b290e8bcd3f87290f56a&language=it-IT&page=1&include_adult=false&query="+self.research )
+          .get("https://api.themoviedb.org/3/search/movie?api_key=6ef857fc5320b290e8bcd3f87290f56a&language=it-IT&page=1&include_adult=false&query="+self.research)
           .then(function (result) {
               self.moviesResult = result.data.results;
               self.totalResult = result.data.total_results;
-              self.page = result.data.page;
+              self.totalPage = result.data.total_pages;
 
-              console.log(self.moviesResult);
+              if (self.moviesResult == 0 && self.seriesResult == 0) {
+                self.moviesError = true;
+              }
+
+              console.log(self.totalResult);
+
+
               self.moviesResult.forEach(
                 (item) => {
                 item.vote_average = Math.floor(Math.round(item.vote_average)/2);
@@ -35,15 +47,59 @@ var app = new Vue (
               );
             }
           )
-          return self.research = "";
         }
       },
+
+      serieResearch: function() {
+        const self = this;
+        self.welcome = false;
+        self.seriesError = false;
+
+
+
+        if (self.research != "") {
+          axios
+          .get("https://api.themoviedb.org/3/search/tv?api_key=e99307154c6dfb0b4750f6603256716d&language=it_IT&query="+self.research)
+          .then(function (result) {
+              self.seriesResult = result.data.results;
+              self.totalResult = result.data.total_results;
+              self.totalPage = result.data.total_pages;
+
+              if (self.seriesResult == 0 && self.moviesResult == 0) {
+                self.seriesError = true;
+              }
+
+              console.log(self.totalResult);
+
+
+
+              self.seriesResult.forEach(
+                (item) => {
+                item.vote_average = Math.floor(Math.round(item.vote_average)/2);
+                item.rankStar = 1 * item.vote_average;
+                item.emptyStar = 5 - item.rankStar;
+                }
+              );
+            }
+          )
+          return self.research = "";
+          
+
+
+        }
+      },
+
+
 
       backToHome: function() {
         const self = this;
         if (self.research == false) {
+          self.welcome = true;
+          self.totalResult = -1;
           self.moviesResult = false;
-          self.page = false;
+          self.seriesResult = false;
+          self.moviesError = false;
+          self. seriesError = false;
         }
       }
     },
