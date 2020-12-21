@@ -30,6 +30,7 @@ var app = new Vue (
                 (item) => {
                 item.vote_average = Math.floor(Math.round(item.vote_average)/2);
                 item.rankStar = 1 * item.vote_average;
+                item.emptyStar = 5 - item.rankStar;
                 }
               );
             }
