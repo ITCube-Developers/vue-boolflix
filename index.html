@@ -30,21 +30,21 @@
             v-on:keyup.enter="movieResearch(), serieResearch()"
             value=""
             placeholder="Cerca Film nella libreria" required >
-            <button @click="movieResearch"class="send"><i class="fas fa-search"></i></button>
+            <button @click="movieResearch(),serieResearch()"class="send"><i class="fas fa-search"></i></button>
           </div>
         </nav>
       </header>
       <main>
-        <div v-if="moviesResult == false && page == 0" class="welcome">
+        <div v-if="welcome == true && error == false" class="welcome">
           <div class="overlay">
           </div>
           <h2>Benvenuto. <br>
-            Milioni di film e recensioni  da scoprire. <br>
+            Centinania di film e telefilm  da scoprire. <br>
             <p>Esplora ora.</p>
           </h2>
         </div>
 
-        <div v-if="totalResult == 0  && page == 1" class="welcome">
+        <div v-if=" totalPage == 0 && welcome == false  " class="welcome">
           <div class="overlay">
           </div>
           <h2>Titolo non presente. <br>
@@ -56,7 +56,7 @@
 
 
 
-        <div v-if="moviesResult != false || seriesResult != false" class="library">
+        <div v-if="seriesResult.length > 0 || moviesResult.length > 0 " class="library">
 
 
           <div v-for="(movie,index) in moviesResult" class="movie-card">

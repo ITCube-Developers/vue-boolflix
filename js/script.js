@@ -8,8 +8,11 @@ var app = new Vue (
       moviesResult: [],
       seriesResult: [],
       research: "",
-      page: "",
+      welcome: true,
+      error: false,
+      totalPage: 1,
       totalResult: "",
+
       adress: "https://image.tmdb.org/t/p/w220_and_h330_face",
     },
 
@@ -17,6 +20,7 @@ var app = new Vue (
 
       movieResearch: function() {
         const self = this;
+        self.welcome = false;
 
         if (self.research != "") {
           axios
@@ -24,7 +28,11 @@ var app = new Vue (
           .then(function (result) {
               self.moviesResult = result.data.results;
               self.totalResult = result.data.total_results;
-              self.page = result.data.page;
+              self.totalPage = result.data.total_pages;
+
+              if (self.moviesResult == 0) {
+                self.totalPage = 0;
+              }
 
               self.moviesResult.forEach(
                 (item) => {
@@ -40,6 +48,7 @@ var app = new Vue (
 
       serieResearch: function() {
         const self = this;
+        self.welcome = false;
 
         if (self.research != "") {
           axios
@@ -47,9 +56,12 @@ var app = new Vue (
           .then(function (result) {
               self.seriesResult = result.data.results;
               self.totalResult = result.data.total_results;
-              self.page = result.data.page;
+              self.totalPage = result.data.total_pages;
 
-              console.log(self.seriesResult);
+              if (self.seriesResult == 0) {
+                self.totalPage = 0;
+              }
+
               self.seriesResult.forEach(
                 (item) => {
                 item.vote_average = Math.floor(Math.round(item.vote_average)/2);
@@ -67,9 +79,10 @@ var app = new Vue (
       backToHome: function() {
         const self = this;
         if (self.research == false) {
+          self.welcome = true;
           self.moviesResult = false;
           self.seriesResult = false;
-          self.page = false;
+          self.error = false;
         }
       }
     },
