@@ -16,6 +16,7 @@ var app = new Vue (
       italianFlag: "https://img.icons8.com/color/2x/italy-circular.png",
       englishFlag: "https://img.icons8.com/color/2x/great-britain-circular.png",
       spanishFlag: "https://img.icons8.com/color/2x/spain2-circular.png",
+      noFlag: "https://img.icons8.com/color/2x/globe.png",
 
       adress: "https://image.tmdb.org/t/p/w220_and_h330_face",
     },
@@ -59,7 +60,7 @@ var app = new Vue (
                   } else if (item.original_language == "es") {
                     item.flag_language = self.spanishFlag;
                   } else {
-                    item.flag_language = item.original_language;
+                    item.flag_language = self.noFlag;
                   }
                 }
               );
@@ -111,7 +112,7 @@ var app = new Vue (
                   } else if (item.original_language == "es") {
                     item.flag_language = self.spanishFlag;
                   } else {
-                    item.flag_language = item.original_language;
+                    item.flag_language = self.noFlag;
                   }
                 }
               );

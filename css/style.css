@@ -136,7 +136,11 @@ main {
   z-index: 4;
 }
 
-
+.lingua {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .review-movie {
   position: absolute;
@@ -144,6 +148,7 @@ main {
   top: 0;
   display: flex;
   flex-direction:column;
+  justify-content: center;
   align-items: center;
   background-color: #2D2F36;
   width: 220px;
@@ -161,6 +166,7 @@ main {
 
 .flag-language{
   width: 30px;
+  margin: 0 3px;
 }
 
 .margin-emptyStar {
