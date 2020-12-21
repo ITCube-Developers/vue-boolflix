@@ -19,15 +19,15 @@
     <div id="app">
       <header>
         <div class="title">
-          <h1 v-if="moviesResult == false" >BOOLFLIX</h1>
-          <h1 @click="backToHome"v-if="moviesResult != false" >BOOLFLIX <i class="fas fa-arrow-circle-left"></i></h1>
+          <h1 v-if="moviesResult == false && seriesResult == false" >BOOLFLIX</h1>
+          <h1 @click="backToHome"v-if="moviesResult != false || seriesResult != false" >BOOLFLIX <i class="fas fa-arrow-circle-left"></i></h1>
         </div>
         <nav class="movie-research">
           <div class="research">
             <input
             type="text"
             v-model="research"
-            v-on:keyup.enter="movieResearch"
+            v-on:keyup.enter="movieResearch(), serieResearch()"
             value=""
             placeholder="Cerca Film nella libreria" required >
             <button @click="movieResearch"class="send"><i class="fas fa-search"></i></button>
@@ -35,7 +35,7 @@
         </nav>
       </header>
       <main>
-        <div v-if="moviesResult == false && page == false" class="welcome">
+        <div v-if="moviesResult == false && page == 0" class="welcome">
           <div class="overlay">
           </div>
           <h2>Benvenuto. <br>
@@ -44,7 +44,7 @@
           </h2>
         </div>
 
-        <div v-if="page == 1  && totalResult == 0" class="welcome">
+        <div v-if="totalResult == 0  && page == 1" class="welcome">
           <div class="overlay">
           </div>
           <h2>Titolo non presente. <br>
@@ -56,7 +56,9 @@
 
 
 
-        <div v-if="moviesResult != false" class="library">
+        <div v-if="moviesResult != false || seriesResult != false" class="library">
+
+
           <div v-for="(movie,index) in moviesResult" class="movie-card">
             <img class="not-found" v-if="movie.poster_path == null" src="https://s018.radikal.ru/i524/1201/c3/60f3aa1387ae.jpg" alt="">
             <img v-if="movie.poster_path != null":src="adress + movie.poster_path" :alt="movie.title">
@@ -68,7 +70,7 @@
                 <span v-for="rank  in moviesResult[index].rankStar">
                     <i class="fas fa-star"></i>
                 </span>
-                <span v-for="rank in moviesResult[index].emptyStar" class="margin-emptyStar"><i class="far fa-star"></i>
+                <span v-for="rank in moviesResult[index].emptyStar" class="margin-emptyStar" ><i class="far fa-star"></i>
                 </span>
               </h4>
               <h4 class="overview-scroll">Overview:
@@ -76,7 +78,34 @@
               <p>{{movie.overview}}</p> </h4>
             </div>
           </div>
+
+          <div v-for="(serie,index) in seriesResult" class="movie-card">
+            <img class="not-found" v-if="serie.poster_path == null" src="https://s018.radikal.ru/i524/1201/c3/60f3aa1387ae.jpg" alt="">
+            <img v-if="serie.poster_path != null":src="adress + serie.poster_path" :alt="serie.name">
+            <div class="review-movie">
+              <h3>Titolo: <span>"{{serie.name}}"</span> </h3>
+              <h4 v-if="serie.name != serie.original_name">Titolo originale: <br> <span>"{{serie.original_name}}"</span> </h4>
+              <h4>Voto:
+                <span v-if="seriesResult[index].vote_average == false"> N/D</span>
+                <span v-for="rank  in seriesResult[index].rankStar">
+                    <i class="fas fa-star"></i>
+                </span>
+                <span v-for="rank in seriesResult[index].emptyStar" class="margin-emptyStar" ><i class="far fa-star"></i>
+                </span>
+              </h4>
+              <h4 class="overview-scroll">Overview:
+              <p v-if="seriesResult[index].overview == false">Coming Soon</p>
+              <p>{{serie.overview}}</p> </h4>
+            </div>
+          </div>
+
+
+
+
         </div>
+
+
+
       </main>
       <footer>
         <h6>Powered by <span class="fortu">Fortunato</span></h6>
