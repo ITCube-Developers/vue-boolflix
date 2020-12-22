@@ -50,15 +50,20 @@ var app = new Vue (
                 item.emptyStar = 5 - item.rankStar;
                 }
               );
+
               self.moviesResult.forEach(
                 (item) => {
-                  if (item.original_language == "it") {
+                  switch (item.original_language) {
+                    case "it":
                     item.flag_language = self.italianFlag;
-                  } else if (item.original_language == "en") {
+                    break;
+                    case "en":
                     item.flag_language = self.englishFlag;
-                  } else if (item.original_language == "es") {
+                    break;
+                    case "es":
                     item.flag_language = self.spanishFlag;
-                  } else {
+                    break;
+                    default:
                     item.flag_language = self.noFlag;
                   }
                 }
@@ -104,16 +109,17 @@ var app = new Vue (
 
               self.seriesResult.forEach(
                 (item) => {
-
-
-
-                  if (item.original_language == "it") {
+                  switch (item.original_language) {
+                    case "it":
                     item.flag_language = self.italianFlag;
-                  } else if (item.original_language == "en") {
+                    break;
+                    case "en":
                     item.flag_language = self.englishFlag;
-                  } else if (item.original_language == "es") {
+                    break;
+                    case "es":
                     item.flag_language = self.spanishFlag;
-                  } else {
+                    break;
+                    default:
                     item.flag_language = self.noFlag;
                   }
                 }
