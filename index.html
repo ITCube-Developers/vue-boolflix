@@ -35,7 +35,7 @@
             v-on:keyup.enter="movieResearch(), serieResearch()"
             value=""
             placeholder="Cerca nella libreria" required >
-            <button @click="movieResearch(),serieResearch()"class="send"><i class="fas fa-search"></i></button>
+            <button @click="movieResearch(), serieResearch()"class="send"><i class="fas fa-search"></i></button>
           </div>
         </nav>
         <!-- /searchbar -->
@@ -178,7 +178,10 @@
       <!--/main area -->
       </main>
       <footer>
-        <h6>Powered by <span class="fortu">Fortunato</span></h6>
+        <div>Made by <span class="fortu">Fortunato</span></div>
+        <div>
+          Follow me on <a class="git" href="https://github.com/sambataro"><i class="fab fa-github-square"></i></a> </>
+        </div>
       </footer>
     </div>
    <script src="js/script.js" charset="utf-8"></script>
