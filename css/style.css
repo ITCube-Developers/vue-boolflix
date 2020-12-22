@@ -1,14 +1,17 @@
-* {
+*
+{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-:focus { outline: none; }
+:focus
+{ outline: none; }
 
 
 
-header {
+header
+{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,7 +21,8 @@ header {
   background-color: black;
 }
 
-h1 {
+h1
+{
   font-size: 50px;
   color: red;
   font-family: 'Bebas Neue', sans-serif;
@@ -29,32 +33,45 @@ h1 {
   font-size: 25px;
 }
 
-#app {
+#app
+{
   width: 100%;
   height: 100vh;
 }
 
-.research input  {
+.research input
+{
   width: 200px;
   height: 30px;
-  padding: 0 5px;
+  padding: 0 10px;
   margin-right: 5px;
-  border-radius: 5px;
-  border: none;
-}
-
-.research button {
-  border: none;
+  border: 2px solid lightgray;
+  border-radius: 10px;
+  font-weight: bolder;
   background-color: black;
-  color: red;
-  font-size: 20px;
-}
-
-.research button:hover {
   color: white;
 }
 
-main {
+::placeholder
+{
+  color: red;
+}
+
+.research button
+{
+  border: none;
+  background-color:black;
+  color: red;
+  font-size: 20px;
+ }
+
+.research button:hover
+{
+  color: white;
+}
+
+main
+{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,7 +80,8 @@ main {
   background-color: black;
 }
 
-.welcome {
+.welcome
+{
   position: relative;
   width: 90%;
   height: 100%;
@@ -73,16 +91,19 @@ main {
   background-size: cover;
 }
 
-.welcome p {
+.welcome p
+{
   color: red;
 }
 
-.welcome a {
+.welcome a
+{
   color: red;
   cursor: pointer;
 }
 
-.welcome h2 {
+.welcome h2
+{
   font-size: 50px;
   padding: 10px;
   color: white;
@@ -92,13 +113,15 @@ main {
   position: absolute;
 }
 
-.overlay {
+.overlay
+{
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-.library {
+.library
+{
   display: flex;
   flex-wrap: wrap;
   width: 90%;
@@ -109,7 +132,8 @@ main {
 }
 
 
-.movie-card {
+.movie-card
+{
   position: relative;
   display: flex;
   justify-content: flex-start;
@@ -118,11 +142,13 @@ main {
   border-radius: 10px;
   margin: 20px 50px 50px 50px;
 }
-.review-movie h3{
+.review-movie h3
+{
   text-align: center;
 }
 
-.movie-card img {
+.movie-card img
+{
   object-fit: cover;
   border-radius: 10px;
   transition: 1s;
@@ -130,19 +156,22 @@ main {
 }
 
 
-.movie-card:hover .review-movie {
+.movie-card:hover .review-movie
+{
   transition: 0.7s;
   opacity: 1;
   z-index: 4;
 }
 
-.lingua {
+.lingua
+{
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.review-movie {
+.review-movie
+{
   position: absolute;
   top: 0;
   top: 0;
@@ -160,42 +189,50 @@ main {
   z-index: 0;
 }
 
-.review-movie h4 {
+.review-movie h4
+{
   margin: 10px 0;
 }
 
-.flag-language{
+.flag-language
+{
   width: 30px;
   margin: 0 3px;
 }
 
-.margin-emptyStar {
+.margin-emptyStar
+{
   margin-left: -3px;
 }
 
-.margin-emptyStar i {
+.margin-emptyStar i
+{
   margin-right: 3px;
 }
 
 
-.fas.fa-star {
+.fas.fa-star
+{
   color: yellow;
 }
 
 
 
 
-.overview-scroll {
+.overview-scroll
+{
   overflow-y: scroll;
 }
 
-.not-found {
+.not-found
+{
   width: 220px;
   height: 342px;
   filter: invert();
 }
 
-footer {
+footer
+{
   height: 5%;
   width: 100%;
   background-color: black;
@@ -204,6 +241,7 @@ footer {
   padding: 10px 5%;
 }
 
-.fortu {
+.fortu
+{
   color: red;
 }

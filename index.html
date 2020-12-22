@@ -17,11 +17,15 @@
   </head>
   <body>
     <div id="app">
+      <!-- header area -->
       <header>
+        <!-- logo -->
         <div class="title">
           <h1 v-if="moviesResult == false && seriesResult == false" >BOOLFLIX</h1>
           <h1 @click="backToHome"v-if="moviesResult != false || seriesResult != false" >BOOLFLIX <i class="fas fa-arrow-circle-left"></i></h1>
         </div>
+        <!-- /logo -->
+        <!-- searchbar -->
         <nav class="movie-research">
           <div class="research">
             <input
@@ -29,12 +33,16 @@
             v-model="research"
             v-on:keyup.enter="movieResearch(), serieResearch()"
             value=""
-            placeholder="Cerca Film nella libreria" required >
+            placeholder="Cerca nella libreria" required >
             <button @click="movieResearch(),serieResearch()"class="send"><i class="fas fa-search"></i></button>
           </div>
         </nav>
+        <!-- /searchbar -->
       </header>
+      <!-- /header area -->
+      <!-- main area -->
       <main>
+      <!-- pagina benvenuto -->
         <div v-if="welcome == true && totalResult == -1" class="welcome">
           <div class="overlay">
           </div>
@@ -43,7 +51,8 @@
             <p>Esplora ora.</p>
           </h2>
         </div>
-
+      <!-- /pagina benvenuto -->
+      <!-- messaggio nessun risultato -->
         <div v-if=" moviesError == true && seriesError== true" class="welcome">
           <div class="overlay">
           </div>
@@ -53,61 +62,119 @@
             <a @click="backToHome">Homepage <i class="fas fa-arrow-circle-left"></i></a>
           </h2>
         </div>
-
-
-
+      <!-- / messaggio nessun risultato -->
+      <!-- libreria che viene creata solo se ci sono risultati -->
         <div v-if="seriesResult.length > 0 || moviesResult.length > 0 " class="library">
-
-
+          <!-- scheda film -->
           <div v-for="(movie,index) in moviesResult" class="movie-card">
+            <!-- immagine di defult in caso non presente -->
             <img class="not-found" v-if="movie.poster_path == null" src="https://s018.radikal.ru/i524/1201/c3/60f3aa1387ae.jpg" alt="">
+            <!-- / immagine di defult in caso non presente -->
+            <!-- immagine copertina presente nell'api -->
             <img v-if="movie.poster_path != null":src="adress + movie.poster_path" :alt="movie.title">
+            <!-- / immagine copertina presente nell'api -->
+            <!-- recensione e dati film -->
             <div class="review-movie">
-              <h3>Titolo: <span>"{{movie.title}}"</span> </h3>
-              <h4 v-if="movie.title != movie.original_title">Titolo originale: <br> <span>"{{movie.original_title}}"</span> </h4>
+            <!-- titolo  e titolo originale -->
+              <h3>Titolo:
+                <span>"{{movie.title}}"</span>
+              </h3>
+              <h4 v-if="movie.title != movie.original_title">
+                Titolo originale: <br>
+                <span>"{{movie.original_title}}"</span>
+              </h4>
+            <!-- / titolo  e titolo originale -->
+            <!-- voto con stelline -->
               <h4>Voto:
                 <span v-if="moviesResult[index].vote_average == false"> N/D</span>
                 <span v-for="rank  in moviesResult[index].rankStar">
                     <i class="fas fa-star"></i>
                 </span>
-                <span v-for="rank in moviesResult[index].emptyStar" class="margin-emptyStar" ><i class="far fa-star"></i>
+                <span v-for="rank in moviesResult[index].emptyStar" class="margin-emptyStar" >
+                  <i class="far fa-star"></i>
                 </span>
               </h4>
-              <h4 class="lingua">Lingua originale: <img v-if="movie.flag_language != false" class="flag-language" :src="movie.flag_language" alt=""> <span>{{movie.original_language}}</span> </h4>
-              <h4 class="overview-scroll">Overview:
-              <p v-if="moviesResult[index].overview == false">Coming Soon</p>
-              <p>{{movie.overview}}</p> </h4>
+            <!-- / voto con stelline -->
+            <!-- lingua e bandiera -->
+              <h4 class="lingua">
+                Lingua originale:
+                <img v-if="movie.flag_language != false" class="flag-language" :src="movie.flag_language" alt="">
+                <span>{{movie.original_language}}</span>
+              </h4>
+            <!-- / lingua e bandiera -->
+            <!-- recensione -->
+              <h4 class="overview-scroll">
+                Overview:
+                <p v-if="moviesResult[index].overview == false">Coming Soon</p>
+                <p>{{movie.overview}}</p>
+              </h4>
             </div>
+            <!-- /recensione -->
+            <!-- / recensione e dati film -->
           </div>
+          <!-- /scheda film -->
 
+          <!-- scheda serie -->
           <div v-for="(serie,index) in seriesResult" class="movie-card">
+            <!-- immagine di defult in caso non presente -->
             <img class="not-found" v-if="serie.poster_path == null" src="https://s018.radikal.ru/i524/1201/c3/60f3aa1387ae.jpg" alt="">
+            <!-- /immagine di defult in caso non presente -->
+            <!-- immagine copertina presente nell'api -->
             <img v-if="serie.poster_path != null":src="adress + serie.poster_path" :alt="serie.name">
+            <!-- /immagine copertina presente nell'api -->
+            <!-- recensione e dati serie -->
             <div class="review-movie">
-              <h3>Titolo: <span>"{{serie.name}}"</span> </h3>
-              <h4 v-if="serie.name != serie.original_name">Titolo originale: <br> <span>"{{serie.original_name}}"</span> </h4>
+              <!-- titolo  e titolo originale -->
+              <h3>Titolo:
+                <span>
+                  "{{serie.name}}"
+                </span>
+              </h3>
+              <h4 v-if="serie.name != serie.original_name">
+                Titolo originale: <br>
+                <span>
+                  "{{serie.original_name}}"
+                </span>
+              </h4>
+              <!-- /titolo  e titolo originale -->
+              <!-- voto con stelline -->
               <h4>Voto:
-                <span v-if="seriesResult[index].vote_average == false"> N/D</span>
+                <span v-if="seriesResult[index].vote_average == false">
+                   N/D
+                 </span>
                 <span v-for="rank  in seriesResult[index].rankStar">
                     <i class="fas fa-star"></i>
                 </span>
-                <span v-for="rank in seriesResult[index].emptyStar" class="margin-emptyStar" ><i class="far fa-star"></i>
+                <span v-for="rank in seriesResult[index].emptyStar" class="margin-emptyStar" >
+                  <i class="far fa-star"></i>
                 </span>
               </h4>
-              <h4 class="lingua">Lingua originale: <img v-if="serie.flag_language != false" class="flag-language" :src="serie.flag_language" alt=""> <span>{{serie.original_language}}</span> </h4>
-              <h4 class="overview-scroll">Overview:
-              <p v-if="seriesResult[index].overview == false">Coming Soon</p>
-              <p>{{serie.overview}}</p> </h4>
+              <!-- /voto con stelline -->
+              <!-- lingua e bandiera -->
+              <h4 class="lingua">
+                Lingua originale:
+                <img v-if="serie.flag_language != false" class="flag-language" :src="serie.flag_language" alt="">
+                <span>
+                  {{serie.original_language}}
+                </span>
+              </h4>
+              <!-- /lingua e bandiera -->
+              <!-- recensione -->
+              <h4 class="overview-scroll">
+                Overview:
+                <p v-if="seriesResult[index].overview == false">
+                Coming Soon
+                </p>
+                <p>{{serie.overview}}</p>
+              </h4>
             </div>
+            <!-- /recensione -->
+            <!-- /recensione e dati serie -->
           </div>
-
-
-
-
+          <!-- /scheda serie -->
         </div>
-
-
-
+      <!-- /libreria che viene creata solo se ci sono risultati -->
+      <!--/main area -->
       </main>
       <footer>
         <h6>Powered by <span class="fortu">Fortunato</span></h6>

@@ -105,6 +105,9 @@ var app = new Vue (
 
               self.seriesResult.forEach(
                 (item) => {
+
+
+
                   if (item.original_language == "it") {
                     item.flag_language = self.italianFlag;
                   } else if (item.original_language == "en") {
@@ -124,8 +127,6 @@ var app = new Vue (
 
         }
       },
-
-
 
       backToHome: function() {
         const self = this;
