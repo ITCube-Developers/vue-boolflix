@@ -12,13 +12,16 @@ var app = new Vue (
       moviesError: false,
       seriesError: false,
       totalResult: -1,
+      starClicked: false,
       flag_language: "",
       italianFlag: "https://img.icons8.com/color/2x/italy-circular.png",
       englishFlag: "https://img.icons8.com/color/2x/great-britain-circular.png",
       spanishFlag: "https://img.icons8.com/color/2x/spain2-circular.png",
       noFlag: "https://img.icons8.com/color/2x/globe.png",
       adress: "https://image.tmdb.org/t/p/w220_and_h330_face",
+      idMovie: "",
     },
+
 
     methods: {
 
@@ -41,6 +44,7 @@ var app = new Vue (
               }
 
               console.log(self.totalResult);
+
 
 
               self.moviesResult.forEach(
@@ -68,7 +72,6 @@ var app = new Vue (
                   }
                 }
               );
-
             }
           )
         }
@@ -79,9 +82,6 @@ var app = new Vue (
         self.welcome = false;
         self.seriesError = false;
         self.seriesResult = [];
-
-
-
 
         if (self.research != "") {
           axios
@@ -94,9 +94,6 @@ var app = new Vue (
               if (self.seriesResult == 0 && self.moviesResult == 0) {
                 self.seriesError = true;
               }
-
-              console.log(self.totalResult);
-
 
 
               self.seriesResult.forEach(
@@ -132,6 +129,9 @@ var app = new Vue (
 
         }
       },
+
+
+
 
       backToHome: function() {
         const self = this;

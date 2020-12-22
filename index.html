@@ -35,7 +35,8 @@
             v-on:keyup.enter="movieResearch(), serieResearch()"
             value=""
             placeholder="Cerca nella libreria" required >
-            <button @click="movieResearch(), serieResearch()"class="send"><i class="fas fa-search"></i></button>
+            <button v-if="research == false"class="send"><i class="fas fa-search"></i></button>
+            <button v-if="research != false" @click="movieResearch(), serieResearch()"class="send"><i class="fas fa-search"></i></button>
           </div>
         </nav>
         <!-- /searchbar -->
@@ -87,7 +88,7 @@
             <!-- / titolo  e titolo originale -->
             <!-- voto con stelline -->
               <h4>Voto:
-                <span v-if="moviesResult[index].vote_average == false"> N/D</span>
+                <span v-if="moviesResult[index].vote_average == false"> N/D  </span>
                 <span v-for="rank  in moviesResult[index].rankStar">
                     <i class="fas fa-star"></i>
                 </span>
@@ -100,7 +101,6 @@
               <h4 class="lingua">
                 Lingua originale:
                 <img v-if="movie.flag_language != false" class="flag-language" :src="movie.flag_language" alt="">
-                <span>{{movie.original_language}}</span>
               </h4>
             <!-- / lingua e bandiera -->
             <!-- recensione -->
@@ -155,9 +155,6 @@
               <h4 class="lingua">
                 Lingua originale:
                 <img v-if="serie.flag_language != false" class="flag-language" :src="serie.flag_language" alt="">
-                <span>
-                  {{serie.original_language}}
-                </span>
               </h4>
               <!-- /lingua e bandiera -->
               <!-- recensione -->

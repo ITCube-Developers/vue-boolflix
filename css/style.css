@@ -52,7 +52,7 @@ h1
   height: 30px;
   padding: 0 10px;
   margin-right: 5px;
-  border: 2px solid lightgray;
+  border: 3px groove white;
   border-radius: 10px;
   font-weight: bolder;
   background-color: black;
@@ -80,6 +80,7 @@ h1
   color: red;
   font-size: 20px;
  }
+
 
 .research button:hover
 {
@@ -248,7 +249,8 @@ main
 
 .far.fa-star:hover
 {
-  color: yellow;
+  color: yellow
+  ;
 }
 
 
