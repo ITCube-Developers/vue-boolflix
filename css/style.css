@@ -29,8 +29,15 @@ h1
   cursor: pointer;
 }
 
-.fas.fa-arrow-circle-left {
+.fas.fa-arrow-circle-left
+{
   font-size: 25px;
+}
+
+.fas.fa-arrow-circle-left:hover
+{
+  background-color: white;
+  border-radius: 50%;
 }
 
 #app
@@ -50,11 +57,20 @@ h1
   font-weight: bolder;
   background-color: black;
   color: white;
+  transition: all 800ms;
+}
+
+.research input:hover
+{
+  box-shadow: 0px 5px 30px 2px rgba(255, 0, 0, 0.5);
+  transition: all 800ms;
+  transition-timing-function: ease-in-out;
 }
 
 ::placeholder
 {
   color: red;
+
 }
 
 .research button
@@ -85,6 +101,7 @@ main
   position: relative;
   width: 90%;
   height: 100%;
+  font-family: 'Roboto', sans-serif;
   background-image: url(https://cdn.hipwallpaper.com/i/98/21/dUyCkp.jpg);
   background-position: center;
   background-repeat: no-repeat;
@@ -129,6 +146,7 @@ main
   padding: 50px;
   background-color: #141922;
   overflow-y: scroll;
+  font-family: 'Roboto', sans-serif;
 }
 
 
@@ -139,8 +157,10 @@ main
   justify-content: flex-start;
   width: 220px;
   height: 342px;
-  border-radius: 10px;
+  border-radius: 1px;
   margin: 20px 50px 50px 50px;
+  transition: all 500ms ease-in-out;
+  z-index: 1;
 }
 .review-movie h3
 {
@@ -150,17 +170,23 @@ main
 .movie-card img
 {
   object-fit: cover;
-  border-radius: 10px;
-  transition: 1s;
-  z-index: 1;
+  border-radius: 1px;
 }
 
 
-.movie-card:hover .review-movie
+.movie-card:hover
 {
-  transition: 0.7s;
-  opacity: 1;
-  z-index: 4;
+  margin-top: 40px;
+  cursor: pointer;
+  box-shadow: 0px 12px 30px 0px rgba(255, 255, 255, 0.5);
+  transition: all 800ms;
+  transition-timing-function: ease-in-out;
+}
+
+.review-movie:hover
+{
+  opacity: 0.9;
+  transition: all 800ms;
 }
 
 .lingua
@@ -179,19 +205,21 @@ main
   flex-direction:column;
   justify-content: center;
   align-items: center;
-  background-color: #2D2F36;
+  background-color:#141922;
   width: 220px;
   height: 342px;
   padding: 15px;
-  border-radius: 10px;
+  border-radius: 1px;
   color: white;
   opacity: 0;
-  z-index: 0;
 }
 
 .review-movie h4
 {
-  margin: 10px 0;
+  margin: 15px 0;
+}
+.review-movie p {
+  margin: 5px 0;
 }
 
 .flag-language
@@ -216,6 +244,10 @@ main
   color: yellow;
 }
 
+.far.fa-star:hover
+{
+  color: yellow;
+}
 
 
 

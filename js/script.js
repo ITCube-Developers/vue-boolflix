@@ -17,7 +17,6 @@ var app = new Vue (
       englishFlag: "https://img.icons8.com/color/2x/great-britain-circular.png",
       spanishFlag: "https://img.icons8.com/color/2x/spain2-circular.png",
       noFlag: "https://img.icons8.com/color/2x/globe.png",
-
       adress: "https://image.tmdb.org/t/p/w220_and_h330_face",
     },
 
@@ -138,7 +137,8 @@ var app = new Vue (
           self.moviesError = false;
           self. seriesError = false;
         }
-      }
+      },
+
     },
   }
 );
