@@ -219,10 +219,10 @@ main
 
 .review-movie h4
 {
-  margin: 15px 0;
+  margin: 5px 0;
 }
 .review-movie p {
-  margin: 5px 0;
+  margin: 2px 0;
 }
 
 .flag-language
@@ -258,6 +258,11 @@ main
 .overview-scroll
 {
   overflow-y: scroll;
+}
+
+.original_title
+{
+  font-size: 10px;
 }
 
 .not-found
