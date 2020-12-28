@@ -70,7 +70,7 @@
           <!-- scheda film -->
           <div v-for="(movie,index) in moviesResult" class="movie-card">
             <!-- immagine di defult in caso non presente -->
-            <img class="not-found" v-if="movie.poster_path == null" src="https://s018.radikal.ru/i524/1201/c3/60f3aa1387ae.jpg" alt="">
+            <img class="not-found" v-if="movie.poster_path == null" src="https://d994l96tlvogv.cloudfront.net/uploads/film/poster/poster-image-coming-soon-placeholder-no-logo-500-x-740_23394.png" alt="">
             <!-- / immagine di defult in caso non presente -->
             <!-- immagine copertina presente nell'api -->
             <img v-if="movie.poster_path != null":src="adress + movie.poster_path" :alt="movie.title">
@@ -80,11 +80,11 @@
             <!-- titolo  e titolo originale -->
               <h3>Titolo:
                 <span>"{{movie.title}}"</span>
+                <h4 v-for="name  in movie.cast"> {{name}}</h4>
               </h3>
               <h4 class="original_title" v-if="movie.title != movie.original_title">
                 Titolo originale: <br>
                 <span>"{{movie.original_title}}"</span>
-                <h4 v-for="name  in movie.cast[index]"> {{name}}</h4>
               </h4>
             <!-- / titolo  e titolo originale -->
             <!-- voto con stelline -->
@@ -131,7 +131,9 @@
                 <span>
                   "{{serie.name}}"
                 </span>
+                <h4 v-for="name  in serie.cast"> {{name}}</h4>
               </h3>
+
               <h4 v-if="serie.name != serie.original_name">
                 Titolo originale: <br>
                 <span>

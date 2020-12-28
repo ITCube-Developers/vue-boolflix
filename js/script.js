@@ -45,52 +45,45 @@ var app = new Vue (
               console.log(self.totalResult);
 
 
-
-              self.moviesResult.forEach(
-                (item) => {
+              for ( var i=0; i < self.moviesResult.length; i++) {
+                const item = self.moviesResult[i];
                 item.vote_average = Math.floor(Math.round(item.vote_average)/2);
                 item.rankStar = 1 * item.vote_average;
                 item.emptyStar = 5 - item.rankStar;
                 item.movie_id = item.id;
                 item.cast = [];
 
+                switch (item.original_language) {
+                  case "it":
+                  item.flag_language = self.italianFlag;
+                  break;
+                  case "en":
+                  item.flag_language = self.englishFlag;
+                  break;
+                  case "es":
+                  item.flag_language = self.spanishFlag;
+                  break;
+                  default:
+                  item.flag_language = self.noFlag;
                 }
-              );
 
-              self.moviesResult.forEach(
-                (item) => {
-                  switch (item.original_language) {
-                    case "it":
-                    item.flag_language = self.italianFlag;
-                    break;
-                    case "en":
-                    item.flag_language = self.englishFlag;
-                    break;
-                    case "es":
-                    item.flag_language = self.spanishFlag;
-                    break;
-                    default:
-                    item.flag_language = self.noFlag;
+                axios
+                .get("https://api.themoviedb.org/3/movie/"+item.movie_id+"/credits?api_key=6ef857fc5320b290e8bcd3f87290f56a&language=")
+                .then(function (result) {
+                  for (var i = 0; i < result.data.cast.length; i++) {
+                  if (item.cast.length < 5) {
+                    item.cast.push(result.data.cast[i].name);
+                    console.log(item.cast);
                   }
                 }
-              );
+                self.$forceUpdate();
+                })
 
-              self.moviesResult.forEach(
-                (item) => {
-                  axios
-                  .get("https://api.themoviedb.org/3/movie/"+item.movie_id+"/credits?api_key=6ef857fc5320b290e8bcd3f87290f56a&language=")
-                  .then(function (result) {
-                    for (var i = 0; i < result.data.cast.length; i++) {
-                      item.cast = result.data.cast;
-                    if (item.cast.length < 5) {
-                      item.cast.push(result.data.cast.name);
-                    }
-                  }
-                  })
-                  }
-              );
+              }
 
-              console.log(self.moviesResult);
+
+
+
             }
           )
         }
@@ -114,41 +107,49 @@ var app = new Vue (
                 self.seriesError = true;
               }
 
-
-              self.seriesResult.forEach(
-                (item) => {
+              for ( var i = 0; i < self.seriesResult.length; i++) {
+                var item = self.seriesResult[i];
                 item.vote_average = Math.floor(Math.round(item.vote_average)/2);
                 item.rankStar = 1 * item.vote_average;
                 item.emptyStar = 5 - item.rankStar;
-                }
-              );
+                item.cast = [];
+                item.serie_id = item.id;
 
-              self.seriesResult.forEach(
-                (item) => {
-                  switch (item.original_language) {
-                    case "it":
-                    item.flag_language = self.italianFlag;
-                    break;
-                    case "en":
-                    item.flag_language = self.englishFlag;
-                    break;
-                    case "es":
-                    item.flag_language = self.spanishFlag;
-                    break;
-                    default:
-                    item.flag_language = self.noFlag;
-                  }
-                }
-              );
+                switch (item.original_language) {
+                      case "it":
+                      item.flag_language = self.italianFlag;
+                      break;
+                      case "en":
+                      item.flag_language = self.englishFlag;
+                      break;
+                      case "es":
+                      item.flag_language = self.spanishFlag;
+                      break;
+                      default:
+                      item.flag_language = self.noFlag;
+
+                    }
+                    axios
+                    .get("https://api.themoviedb.org/3/tv/"+item.serie_id+"/credits?api_key=6ef857fc5320b290e8bcd3f87290f56a&language=")
+                    .then(function (result) {
+                      for (var i = 0; i < result.data.cast.length; i++) {
+                      if (item.cast.length < 5) {
+                        item.cast.push(result.data.cast[i].name);
+                        console.log(item.cast);
+                      }
+                    }
+                    self.$forceUpdate();
+                    })
             }
-          )
-          return self.research = "";
+            return self.research = "";
 
 
 
+
+
+        })
         }
       },
-
 
 
 
@@ -165,5 +166,6 @@ var app = new Vue (
       },
 
     },
+
   }
 );
