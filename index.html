@@ -80,7 +80,13 @@
             <!-- titolo  e titolo originale -->
               <h3>Titolo:
                 <span>"{{movie.title}}"</span>
-                <h4 v-for="name  in movie.cast"> {{name}}</h4>
+                <br>
+                <div v-show="!visible" class="cast">
+                  <h3>Cast:</h3>
+                  <h5 v-if="moviesResult[index].cast == false"> N/D  Coming Soon</h5>
+                  <h5 v-for="name  in movie.cast"> {{name}}</h5>
+                  <button v-show="!visible" v-on:click="visible = !visible" class="btn-overview">Overview  <i class="fas fa-arrow-circle-left"></i></button>
+                </div>
               </h3>
               <h4 class="original_title" v-if="movie.title != movie.original_title">
                 Titolo originale: <br>
@@ -88,7 +94,7 @@
               </h4>
             <!-- / titolo  e titolo originale -->
             <!-- voto con stelline -->
-              <h4>Voto:
+              <h4 v-show="visible">Voto:
                 <span v-if="moviesResult[index].vote_average == false"> N/D  </span>
                 <span v-for="rank  in moviesResult[index].rankStar">
                     <i class="fas fa-star"></i>
@@ -98,18 +104,21 @@
                 </span>
               </h4>
             <!-- / voto con stelline -->
+            <button v-show="visible" v-on:click="visible = !visible" class="btn-padding">Scopri il Cast</button>
             <!-- lingua e bandiera -->
-              <h4 class="lingua">
+              <h4 v-show="visible" class="lingua">
                 Lingua originale:
                 <img v-if="movie.flag_language != false" class="flag-language" :src="movie.flag_language" alt="">
               </h4>
             <!-- / lingua e bandiera -->
             <!-- recensione -->
-              <h4 class="overview-scroll">
+              <h4 v-show="visible" class="overview-scroll">
                 Overview:
                 <p v-if="moviesResult[index].overview == false">Coming Soon</p>
                 <p>{{movie.overview}}</p>
               </h4>
+
+
             </div>
             <!-- /recensione -->
             <!-- / recensione e dati film -->
@@ -119,7 +128,7 @@
           <!-- scheda serie -->
           <div v-for="(serie,index) in seriesResult" class="movie-card">
             <!-- immagine di defult in caso non presente -->
-            <img class="not-found" v-if="serie.poster_path == null" src="https://s018.radikal.ru/i524/1201/c3/60f3aa1387ae.jpg" alt="">
+            <img class="not-found" v-if="serie.poster_path == null" src="https://d994l96tlvogv.cloudfront.net/uploads/film/poster/poster-image-coming-soon-placeholder-no-logo-500-x-740_23394.png" alt="">
             <!-- /immagine di defult in caso non presente -->
             <!-- immagine copertina presente nell'api -->
             <img v-if="serie.poster_path != null":src="adress + serie.poster_path" :alt="serie.name">
@@ -131,7 +140,13 @@
                 <span>
                   "{{serie.name}}"
                 </span>
-                <h4 v-for="name  in serie.cast"> {{name}}</h4>
+                <br>
+                <div v-show="!visible" class="cast">
+                  <h3>Cast:</h3>
+                  <h5 v-if="seriesResult[index].cast == false"> N/D  Coming Soon</h5>
+                  <h5 v-for="name  in serie.cast"> {{name}}</h5>
+                  <button v-show="!visible" v-on:click="visible = !visible" class="btn-overview">Overview  <i class="fas fa-arrow-circle-left"></i></button>
+                </div>
               </h3>
 
               <h4 v-if="serie.name != serie.original_name">
@@ -142,7 +157,7 @@
               </h4>
               <!-- /titolo  e titolo originale -->
               <!-- voto con stelline -->
-              <h4>Voto:
+              <h4 v-show="visible">Voto:
                 <span v-if="seriesResult[index].vote_average == false">
                    N/D
                  </span>
@@ -154,14 +169,15 @@
                 </span>
               </h4>
               <!-- /voto con stelline -->
+              <button v-show="visible" v-on:click="visible = !visible" class="btn-padding">Scopri il Cast</button>
               <!-- lingua e bandiera -->
-              <h4 class="lingua">
+              <h4 v-show="visible" class="lingua">
                 Lingua originale:
                 <img v-if="serie.flag_language != false" class="flag-language" :src="serie.flag_language" alt="">
               </h4>
               <!-- /lingua e bandiera -->
               <!-- recensione -->
-              <h4 class="overview-scroll">
+              <h4 v-show="visible" class="overview-scroll">
                 Overview:
                 <p v-if="seriesResult[index].overview == false">
                 Coming Soon

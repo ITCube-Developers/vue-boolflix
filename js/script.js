@@ -9,10 +9,10 @@ var app = new Vue (
       seriesResult: [],
       research: "",
       welcome: true,
+      visible: true,
       moviesError: false,
       seriesError: false,
       totalResult: -1,
-      starClicked: false,
       flag_language: "",
       italianFlag: "https://img.icons8.com/color/2x/italy-circular.png",
       englishFlag: "https://img.icons8.com/color/2x/great-britain-circular.png",
@@ -52,6 +52,7 @@ var app = new Vue (
                 item.emptyStar = 5 - item.rankStar;
                 item.movie_id = item.id;
                 item.cast = [];
+                item.visible = true;
 
                 switch (item.original_language) {
                   case "it":
