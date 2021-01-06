@@ -52,7 +52,6 @@ var app = new Vue (
                 item.emptyStar = 5 - item.rankStar;
                 item.movie_id = item.id;
                 item.cast = [];
-                item.visible = true;
 
                 switch (item.original_language) {
                   case "it":
