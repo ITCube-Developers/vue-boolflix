@@ -78,7 +78,7 @@
             <!-- recensione e dati film -->
             <div class="review-movie">
             <!-- titolo  e titolo originale -->
-              <h3>Titolo:
+              <div>
                 <span>"{{movie.title}}"</span>
                 <h6 class="genres"><span class="comma" v-for="type in movie.genre">{{type}} </span> </h6>
                 <br>
@@ -88,11 +88,11 @@
                   <h4 v-for="name  in movie.cast"> {{name}}</h4>
                   <button v-show="!visible" v-on:click="visible = !visible" class="btn-overview">Overview  <i class="fas fa-arrow-circle-left"></i></button>
                 </div>
-              </h3>
-              <h4 class="original_title" v-if="movie.title != movie.original_title">
+              </div>
+              <div v-show="visible" class="original_title" v-if="movie.title != movie.original_title">
                 Titolo originale: <br>
                 <span>"{{movie.original_title}}"</span>
-              </h4>
+              </div>
             <!-- / titolo  e titolo originale -->
             <!-- voto con stelline -->
               <h4 v-show="visible">Voto:
@@ -135,7 +135,7 @@
             <!-- recensione e dati serie -->
             <div class="review-movie">
               <!-- titolo  e titolo originale -->
-              <h3>Titolo:
+              <div>Titolo:
                 <span>
                   "{{serie.name}}"
                 </span>
@@ -147,14 +147,14 @@
                   <h4 v-for="name  in serie.cast"> {{name}}</h4>
                   <button v-show="!visible" v-on:click="visible = !visible" class="btn-overview">Overview  <i class="fas fa-arrow-circle-left"></i></button>
                 </div>
-              </h3>
+              </div>
 
-              <h4 v-if="serie.name != serie.original_name">
-                <span v-show="visible">
+              <div v-if="serie.name != serie.original_name">
+                <span v-show="visible" class="original_title">
                   Titolo originale: <br>
                   "{{serie.original_name}}"
                 </span>
-              </h4>
+              </div>
               <!-- /titolo  e titolo originale -->
               <!-- voto con stelline -->
               <h4 v-show="visible">Voto:
@@ -194,7 +194,7 @@
       <!--/main area -->
       </main>
       <footer>
-        <div>Made by <img  class="sign" src="img/firma.png" alt=""> </div>
+        <div>Made by <img class="sign" src="img/firma.png" alt=""> </div>
         <div>
           Follow me on <a class="git" href="https://github.com/sambataro"><i class="fab fa-github-square"></i></a> </>
         </div>

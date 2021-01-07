@@ -25,7 +25,7 @@ var app = new Vue (
 
     methods: {
 
-      
+
 
       movieResearch: function() {
         const self = this;
@@ -33,7 +33,7 @@ var app = new Vue (
         self.moviesError = false;
         self.moviesResult = [];
 
-        if (self.research != "") {
+        if (self.research !== "") {
           axios
           .get("https://api.themoviedb.org/3/search/movie?api_key=6ef857fc5320b290e8bcd3f87290f56a&language=it-IT&page=1&include_adult=fale&query="+self.research)
           .then(function (result) {
@@ -84,7 +84,7 @@ var app = new Vue (
                 })
 
                 axios
-                .get("https://api.themoviedb.org/3/movie/"+item.movie_id+"?api_key=6ef857fc5320b290e8bcd3f87290f56a&language=")
+                .get("https://api.themoviedb.org/3/movie/"+item.movie_id+"?api_key=6ef857fc5320b290e8bcd3f87290f56a&language=it-IT")
                 .then(function (result) {
                   for (var i = 0; i < result.data.genres.length; i++) {
                   if (item.genre.length < 2) {
@@ -158,7 +158,7 @@ var app = new Vue (
                     })
 
                     axios
-                    .get("https://api.themoviedb.org/3/tv/"+item.serie_id+"?api_key=6ef857fc5320b290e8bcd3f87290f56a&language=")
+                    .get("https://api.themoviedb.org/3/tv/"+item.serie_id+"?api_key=6ef857fc5320b290e8bcd3f87290f56a&language=it-IT")
                     .then(function (result) {
                       for (var i = 0; i < result.data.genres.length; i++) {
                       if (item.genre.length < 2) {

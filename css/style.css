@@ -107,6 +107,7 @@ main
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
 }
 
 .welcome p
@@ -162,11 +163,9 @@ main
   margin: 20px 15px 50px 15px;
   transition: all 500ms ease-in-out;
   z-index: 1;
-}
-.review-movie h3
-{
   text-align: center;
 }
+
 
 .movie-card img
 {
@@ -213,6 +212,14 @@ main
   border-radius: 1px;
   color: white;
   opacity: 0;
+}
+
+.review-movie div
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .cast h4
