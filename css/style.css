@@ -24,7 +24,7 @@ header
 h1
 {
   font-size: 50px;
-  color: red;
+  color: #D94B4B;
   font-family: 'Bebas Neue', sans-serif;
   cursor: pointer;
 }
@@ -69,7 +69,7 @@ h1
 
 ::placeholder
 {
-  color: red;
+  color: #D94B4B;
 
 }
 
@@ -77,7 +77,7 @@ h1
 {
   border: none;
   background-color:black;
-  color: red;
+  color: #D94B4B;
   font-size: 20px;
  }
 
@@ -111,12 +111,12 @@ main
 
 .welcome p
 {
-  color: red;
+  color: #D94B4B;
 }
 
 .welcome a
 {
-  color: red;
+  color: #D94B4B;
   cursor: pointer;
 }
 
@@ -307,7 +307,6 @@ footer
 footer div
 {
   display: flex;
-  justify-content: center;
   align-items: center;
   height: 100%;
   font-size: 25px;
@@ -318,7 +317,7 @@ footer div
 {
   margin-left: 5px;
   text-decoration: none;
-  color: red;
+  color: #D94B4B;
 }
 
 .git:hover
@@ -354,28 +353,32 @@ footer div
 
 
 
-.fortu
+.sign
 {
-  margin-left: 5px;
-  color: red;
+  color: #D94B4B;
+  width: 30%;
 }
 
-::-webkit-scrollbar {
+::-webkit-scrollbar
+{
   width: 4px;
   padding: 2px;
   border: 6px solid transparent;
   background-clip: content-box;
 }
 
-::-webkit-scrollbar-track {
+::-webkit-scrollbar-track
+ {
   background: none;
 }
 
-::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb
+{
   border-radius: 50px;
   background: rgba(255,0,0,0.5) ;
 }
 
-::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover
+{
   background: white;
 }

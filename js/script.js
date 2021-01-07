@@ -25,6 +25,8 @@ var app = new Vue (
 
     methods: {
 
+      
+
       movieResearch: function() {
         const self = this;
         self.welcome = false;
