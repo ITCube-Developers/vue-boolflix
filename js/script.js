@@ -22,6 +22,7 @@ var app = new Vue (
     },
 
 
+
     methods: {
 
       movieResearch: function() {
@@ -52,6 +53,7 @@ var app = new Vue (
                 item.emptyStar = 5 - item.rankStar;
                 item.movie_id = item.id;
                 item.cast = [];
+                item.genre = [];
 
                 switch (item.original_language) {
                   case "it":
@@ -79,6 +81,17 @@ var app = new Vue (
                 self.$forceUpdate();
                 })
 
+                axios
+                .get("https://api.themoviedb.org/3/movie/"+item.movie_id+"?api_key=6ef857fc5320b290e8bcd3f87290f56a&language=")
+                .then(function (result) {
+                  for (var i = 0; i < result.data.genres.length; i++) {
+                  if (item.genre.length < 2) {
+                    item.genre.push(result.data.genres[i].name);
+                    console.log(item.genre);
+                  }
+                }
+                self.$forceUpdate();
+                })
               }
 
 
@@ -114,6 +127,7 @@ var app = new Vue (
                 item.emptyStar = 5 - item.rankStar;
                 item.cast = [];
                 item.serie_id = item.id;
+                item.genre = [];
 
                 switch (item.original_language) {
                       case "it":
@@ -136,6 +150,18 @@ var app = new Vue (
                       if (item.cast.length < 5) {
                         item.cast.push(result.data.cast[i].name);
                         console.log(item.cast);
+                      }
+                    }
+                    self.$forceUpdate();
+                    })
+
+                    axios
+                    .get("https://api.themoviedb.org/3/tv/"+item.serie_id+"?api_key=6ef857fc5320b290e8bcd3f87290f56a&language=")
+                    .then(function (result) {
+                      for (var i = 0; i < result.data.genres.length; i++) {
+                      if (item.genre.length < 2) {
+                        item.genre.push(result.data.genres[i].name);
+                        console.log(item.genre);
                       }
                     }
                     self.$forceUpdate();

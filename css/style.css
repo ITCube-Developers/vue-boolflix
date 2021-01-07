@@ -215,9 +215,14 @@ main
   opacity: 0;
 }
 
-.cast
+.cast h4
 {
-margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-style: italic;
+  opacity: 0.7;
 }
 
 .review-movie h4
@@ -254,6 +259,17 @@ margin: 10px 0;
 {
   color: yellow
   ;
+}
+
+.genres
+{
+  font-style: italic;
+  opacity: 0.7;
+}
+
+
+.comma:not(:first-child):before {
+  content: ", ";
 }
 
 
@@ -318,7 +334,7 @@ footer div
   justify-content: center;
   align-items: center;
   padding: 5px;
-  margin: 10px 0;
+  margin: 5px 0;
 }
 
 .btn-overview
@@ -328,7 +344,7 @@ footer div
   justify-content: center;
   align-items: center;
   padding: 5px;
-  margin: 10px 25%;
+  margin: 10px 30px;
 }
 
 .btn-overview i

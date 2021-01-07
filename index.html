@@ -80,11 +80,12 @@
             <!-- titolo  e titolo originale -->
               <h3>Titolo:
                 <span>"{{movie.title}}"</span>
+                <h6 class="genres"><span class="comma" v-for="type in movie.genre">{{type}} </span> </h6>
                 <br>
                 <div v-show="!visible" class="cast">
                   <h3>Cast:</h3>
                   <h5 v-if="moviesResult[index].cast == false"> N/D  Coming Soon</h5>
-                  <h5 v-for="name  in movie.cast"> {{name}}</h5>
+                  <h4 v-for="name  in movie.cast"> {{name}}</h4>
                   <button v-show="!visible" v-on:click="visible = !visible" class="btn-overview">Overview  <i class="fas fa-arrow-circle-left"></i></button>
                 </div>
               </h3>
@@ -138,18 +139,19 @@
                 <span>
                   "{{serie.name}}"
                 </span>
+                <h6 class="genres"><span class="comma" v-for="type in serie.genre">{{type}} </span> </h6>
                 <br>
                 <div v-show="!visible" class="cast">
                   <h3>Cast:</h3>
                   <h5 v-if="seriesResult[index].cast == false"> N/D  Coming Soon</h5>
-                  <h5 v-for="name  in serie.cast"> {{name}}</h5>
+                  <h4 v-for="name  in serie.cast"> {{name}}</h4>
                   <button v-show="!visible" v-on:click="visible = !visible" class="btn-overview">Overview  <i class="fas fa-arrow-circle-left"></i></button>
                 </div>
               </h3>
 
               <h4 v-if="serie.name != serie.original_name">
-                Titolo originale: <br>
-                <span>
+                <span v-show="visible">
+                  Titolo originale: <br>
                   "{{serie.original_name}}"
                 </span>
               </h4>
